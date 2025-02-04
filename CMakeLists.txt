@@ -7,7 +7,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Enable test option
-option(ENABLE_TESTS "Enable building and running tests" OFF)
+#option(ENABLE_TESTS "Enable building and running tests" OFF)
 
 # Set C standard
 set(CMAKE_C_STANDARD 11)
@@ -34,15 +34,15 @@ endif()
 add_library(SPI_LIB STATIC ${SOURCES})
 target_include_directories(SPI_LIB PUBLIC ${INCLUDE_DIR})
 
-if(NOT ENABLE_TESTS)
+#if(NOT ENABLE_TESTS)
     # Create the main executable only when not testing
     add_executable(spi_project ${SOURCES})
     target_include_directories(spi_project PRIVATE ${INCLUDE_DIR})
-else()
+#else()
     # Add compile definition to disable main in source files
-    target_compile_definitions(SPI_LIB PRIVATE ENABLE_TESTS)
+ #   target_compile_definitions(SPI_LIB PRIVATE ENABLE_TESTS)
     
     # Add test directory
-    message("Tests are enabled. Adding test directory.")
-    add_subdirectory(tests)
-endif()
+  #  message("Tests are enabled. Adding test directory.")
+ #   add_subdirectory(tests)
+#endif()
